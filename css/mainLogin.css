@@ -1,0 +1,48 @@
+body
+{
+	background-color: #e9e9e9;
+	width:1440px;
+	height:1000px;
+	margin: 0 auto;
+}
+.header
+{
+	width:100%;
+	height:120px;
+	background-color: #ffffff;
+	border-bottom-style:solid;
+	border-width:2px;
+	border-bottom-color:#d9d9d9;
+	
+	
+}
+#threezineLogo
+{
+	float:left;
+	margin:0px;
+	position:relative;
+	top:43px;
+	left:180px;
+}
+form
+{
+   
+	
+	float: right;
+	margin-right:260px;
+	margin-bottom:20px;
+	
+}
+label
+{
+	display:inline;
+	width:50px;
+}
+button
+{
+	 
+	position:relative;
+	bottom:10px;
+	left:190px;
+
+}
