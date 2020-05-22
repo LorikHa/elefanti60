@@ -1,0 +1,525 @@
+h2 {
+    font-size: 30px;
+    font-weight: 500;
+
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 500;
+
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 500;
+
+}
+
+body {
+    width: 100%;
+
+}
+
+nav {
+    height: 65px;
+    width: 100%;
+    background-color: #726981;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav .nav-bar {
+    height: inherit;
+    width: 100%;
+    position: relative;
+}
+
+nav div.logo {
+    display: inline-block;
+    padding: 10px;
+    height: 65px;
+    width: 65px;
+    float: left;
+}
+
+nav div.hamburger-menu {
+    display: inline-block;
+    padding: 10px;
+    height: 65px;
+    width: 65px;
+    float: right;
+    display: none;
+}
+
+nav div.logo img {
+    height: 45px;
+}
+
+nav div.hamburger-menu img {
+    height: 45px;
+}
+
+nav div.menu {
+    height: 65px;
+    display: inline-block;
+    float: left;
+}
+
+
+#menu-box {
+    display: none;
+}
+
+#menu-box.responsive {
+    display: block;
+    position: absolute;
+    top: 65px;
+    width: 100%;
+    background-color: #726981;
+    z-index: 1;
+    height: 200px;
+}
+
+
+#menu-box.responsive li {
+    display: block;
+    height: 45px;
+
+}
+
+nav ul {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav div:not(.logo) ul li a {
+    font-size: 20px;
+    padding: 10px;
+}
+
+nav div:not(.logo) ul li a:hover {
+    background-color: #4A4453;
+}
+
+nav div.action-menu {
+    height: 65px;
+    margin-right: 10px;
+    display: inline-block;
+    float: right;
+}
+
+.content {
+    width: 100%;
+    position: relative;
+}
+
+.content .products-wrapper {
+    width: 100%;
+}
+
+.slider {
+    background-color: #949599;
+    height: 55vh;
+    min-height: 500px;
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.slider .mySlides {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /*left: 0;
+    top: 0;*/
+}
+
+.slider img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.product.out-of-stock div:not(.product_clone):not(.price), .product.out-of-stock hr {
+    opacity: 0.5;
+}
+
+.product.out-of-stock .product_clone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../images/sold-out.png") center center no-repeat;
+    background-size: contain;
+    opacity: 1;
+}
+
+#slider-text {
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.product {
+    display: inline-block;
+    padding: 0 10px 0 10px;
+    margin: 10px 0px 10px 0;
+    width: calc(33% - 23px);
+    border: 1px solid #949599;
+    border-radius: 3px;
+    background-color: #fff;
+    height: 300px;
+}
+
+.product .product-image {
+    text-align: center;
+    height: 65%;
+    padding: 10px;
+
+}
+
+.product .product-image img {
+    height: 100%;
+
+}
+
+.product-details {
+    height: calc(35% - 21px);
+}
+
+.product-details .title {
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    position: relative;
+}
+
+.product-details .title h4 {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.product-details .price {
+    color: grey;
+    width: 100%;
+    height: 50%;
+    text-align: center;
+}
+
+footer {
+    height: 80px;
+    background-color: #726981;
+    clear: both;
+    /* background-color: #6C96C0; */
+    /* background-color: #32CAE6; */
+    /* background-color: #54FBDD; */
+}
+
+footer p {
+    text-align: center;
+    color: #fff;
+    padding-top: 10px;
+}
+
+.category {
+    position: relative;
+}
+
+.category button {
+    display: none;
+}
+
+.category button.back {
+    left: -22.5px;
+    -webkit-transition: left 0.25s;
+    -moz-transition: left 0.25s;
+    -ms-transition: left 0.25s;
+    -o-transition: left 0.25s;
+}
+
+.category button.back:hover {
+    left: -28.5px;
+}
+
+.category button.next {
+    right: -22.5px;
+    -webkit-transition: right 0.25s;
+    -moz-transition: right 0.25s;
+    -ms-transition: right 0.25s;
+    -o-transition: right 0.25s;
+}
+
+.category button.next:hover {
+    right: -28.5px;
+}
+
+.category button {
+    position: absolute;
+    font-size: 25px;
+    width: 45px;
+    height: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid #484848;
+    background-color: #fff;
+    border-radius: 50%;
+    -webkit-transition: color 0.25s;
+    -moz-transition: color 0.25s;
+    -ms-transition: color 0.25s;
+    -o-transition: color 0.25s;
+    color: #484848;
+    cursor: pointer;
+}
+
+.category button:focus {
+    outline: none;
+}
+
+.category span {
+    position: absolute;
+    bottom: -10px;
+    right: 0px;
+}
+
+.category span a {
+    text-decoration: underline;
+    color: #4A4453;
+    font-size: 15px;
+}
+
+.product {
+    position: relative;
+    cursor: pointer;
+}
+
+.product:not(.out-of-stock) .product_clone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #484848;
+    opacity: 0;
+}
+
+.product:not(.out-of-stock):hover .product_clone {
+    opacity: 0.4;
+    -webkit-transition: 0.25s;
+    -moz-transition: 0.25s;
+    -ms-transition: 0.25s;
+    -o-transition: 0.25s;
+}
+
+.divider {
+    margin: 30px 0 30px 0;
+    clear: both;
+}
+
+.product_divider {
+    margin: 0;
+}
+
+.block {
+    margin-top: 20px;
+}
+
+.block .text-aboutUs.overall {
+    text-align: center;
+}
+
+.block .text-aboutUs.overall h3 {
+    margin-bottom: 10px;
+}
+
+.f-left p img {
+    float: left;
+    margin-right: 10px;
+}
+
+.f-right h3 {
+    text-align: right;
+}
+
+.f-right p img {
+    float: right;
+    margin-left: 10px;
+}
+
+.block .text-aboutUs.overall p {
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.member p {
+    text-align: justify;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.member h3 {
+    margin-bottom: 10px;
+}
+
+.content .block:last-child {
+    margin-bottom: 20px;
+}
+
+.mySlides {
+    display: none
+}
+
+.prev-slide {
+    left: 20px;
+}
+
+.next-slide {
+    right: 20px;
+}
+
+.slider-button {
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 1.5;
+}
+
+.form-group {
+    width: 50%;
+    margin: 15px auto;
+}
+
+
+.form-label {
+    width: 29%;
+    text-align: right;
+    display: inline-block;
+    line-height: 24px;
+    font-size: 18px;
+    height: 24px;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+.form-element > input,select {
+    height: 24px;
+    width: 100%;
+    border: none;
+    border: solid 1px #726981;
+    border-radius: 2px;
+    padding: 0 5px;
+}
+
+
+.form-element > textarea {
+    width: 100%;
+    border: none;
+    border: solid 1px #726981;
+    border-radius: 2px;
+
+}
+
+.form-element {
+    width: 69%;
+    display: inline-block;
+    clear: both;
+}
+
+.form-element .radioButton, .form-element .checkBox {
+    display: inline;
+}
+
+.form-group button:hover {
+    cursor: pointer;
+    background-color: #726981;
+    color: #fff;
+    transition: 0.2s;
+}
+
+.form-group button {
+    position: absolute;
+    width: 80px;
+    height: 25px;
+    background-color: transparent;
+    border: 1px solid #726981;
+    border-radius: 2px;
+    margin: auto;
+    transition: 0.2s;
+    right: -5px;
+
+}
+
+.button-wrapper {
+    position: relative;
+    height: 25px;
+}
+
+form {
+    margin-top: 10vh;
+    height: 70vh;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.error{
+    color: red;
+}
+.success{
+    color: green;
+    text-align: center;
+}
+
+
+.buttons{
+    width: 100%;
+    margin-top: 15px;
+}
+.button{
+    width: 150px;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid #726981;
+    border-radius: 2px;
+    margin: auto;
+    transition: 0.2s;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #726981;
+    color: #fff;
+    transition: 0.2s;
+}
+
+#delete_product:hover{
+    background-color: #f91f1f;
+
+}
+.spacer{
+height: 60vh;
+}

@@ -1,0 +1,108 @@
+@media (min-width: 320px) and  (max-width: 768px) {
+    .wrapper {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .product {
+        width: calc(100% - 42px);
+
+        margin: 10px;
+    }
+    nav div.hamburger-menu{
+        display: block;
+    }
+    nav div.menu-box{
+        display: none;
+    }
+    .block {
+        padding: 0 20px;
+    }
+
+    .block .text-aboutUs.overall p {
+        text-align: initial;
+    }
+
+    .member p {
+        text-align: initial;
+    }
+
+    .form-group {
+        width: 95%;
+        margin: auto;
+    }
+
+    .form-label {
+        width: 95%;
+        text-align: left;
+        clear: both;
+        float: none;
+        display: block;
+        margin: 0;
+    }
+
+    .form-element {
+        width: 95%;
+        display: block;
+    }
+
+    form {
+        height: initial;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-group button{
+        right: 8px;
+    }
+
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .wrapper {
+        max-width: 848px;
+        margin: 0 auto;
+    }
+
+    .product {
+        width: calc(31.5% - 16px);
+    }
+
+    .category span {
+        right: 20px;
+    }
+    #menu-box.responsive {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    .product {
+        width: calc(32.5% - 20px);
+
+    }
+    #menu-box.responsive {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .wrapper {
+        max-width: 1144px;
+        margin: 0 auto;
+    }
+
+    .product {
+
+        width: calc(33% - 23px);
+
+    }
+    #menu-box.responsive {
+        display: none;
+    }
+}
