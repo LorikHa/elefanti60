@@ -1,4 +1,4 @@
-@media (min-width: 320px) and  (max-width: 1274px) {
+@media (min-width: 320px) and  (max-width: 768px) {
     .wrapper {
         width: 100%;
         margin: 0 auto;
@@ -58,7 +58,40 @@
 
 }
 
-@media (min-width: 1275px) {
+@media (min-width: 769px) and (max-width: 992px) {
+    .wrapper {
+        max-width: 848px;
+        margin: 0 auto;
+    }
+
+    .product {
+        width: calc(31.5% - 16px);
+    }
+
+    .category span {
+        right: 20px;
+    }
+    #menu-box.responsive {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    .product {
+        width: calc(32.5% - 20px);
+
+    }
+    #menu-box.responsive {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
     .wrapper {
         max-width: 1144px;
         margin: 0 auto;
@@ -71,30 +104,5 @@
     }
     #menu-box.responsive {
         display: none;
-    }
-}
-@media (max-width: 500px) {
-    .image100 {
-        width: 100%;
-    }
-}
-@media (min-width: 501px) and (max-width: 769px) {
-    .image100 {
-        width: 75%;
-    }
-}
-@media (min-width: 770px) and (max-width: 779px){
-    .image100 {
-        width: 75%;
-    }
-}
-@media (min-width: 780px) and (max-width: 1110px){
-    .image100 {
-        width: 50%;
-    }
-}
-@media (min-width: 1111px){
-    .image100 {
-        width: 100%;
     }
 }
