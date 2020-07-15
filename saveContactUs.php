@@ -1,5 +1,5 @@
 <?php
-require_once "config.php";
+session_start();
 
 	$name =  "";
 	$nameError =  "";
@@ -125,42 +125,20 @@ function validateDate($date, $format){
 	if($nameError ===  "" && $lastNameError === "" && $emailError === "" && $birthDateError ==="" &&
 	$rateUsError ==="" && $phonesError ==="" && $monitorsError === "" && $laptopsError ==="" &&
 	$commentError ===""){
-		//parandalon sql-injection
-			$sql = "INSERT INTO contact_us (name, last_name, email, birthDate,rateUs,phones,monitors,laptops,comment) VALUES (?, ?, ? , ? , ? , ? , ? , ? ,?)";
-         
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssssssss", $param_name, $param_lastname,$param_email,$param_birthDate,
-                $param_rateUs,$param_phones, $param_monitors, $param_laptops, $param_comment);
-            
-            // Set parameters
-            $param_name = $name;
-            $param_lastname = $lastName;
-            $param_email = $email;
-            $param_rateUs = $rateUs;
-            $param_phones = $phones;
-            $param_monitors = $monitors;
-            $param_laptops = $laptops;
-            $param_comment = $comment;
-            $param_birthDate = $birthDate;
-
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Redirect to contact us
-                // header("location: contactUs.php");
-                $dataSend="message=Contact form successfully sent!";
-                header('Location: contactUs.php?'.$dataSend);
+        $root = realpath($_SERVER["DOCUMENT_ROOT"]);
+        include $root."/Controller/ContactController.php";
+        require $root."/Model/ContactModel.php";
+        $ContactController=new ContactController();
+        $contactData=$ContactController->insertComment($name, $lastName,$email,$birthDate,
+        $rateUs,$phones, $monitors, $laptops, $comment);
+          if(isset($contactData)&&$contactData=='success'){
+                $_SESSION['message']="Contact form successfully sent!";
+                header('Location: contactUs.php');
             }
             else {
-   				 echo "Something's wrong with the query: " . mysqli_error($link);
-			}
-        mysqli_stmt_close($stmt);
-
-        }else {
-    echo "Something's wrong with the query: " . mysqli_error($link);
-}
-         
-        // Close statement
+   				 $_SESSION['message']="Something's wrong with the query!";
+                    header('Location: contactUs.php');
+            }
     }else{
     	$dataSend=array();
 
@@ -191,12 +169,9 @@ $dataSend[]="laptopsError=".$laptopsError;
 	if($commentError!=""){
 $dataSend[]="commentError=".$commentError;
 	}
-    	$dataSend=implode("&", $dataSend);
-    	header('Location: contactUs.php?'.$dataSend);
+        $_SESSION['message']=implode("&", $dataSend);
+        header('Location: contactUs.php');
     
 	  }
-    
-    // Close connection
-    mysqli_close($link);
 	
 ?>

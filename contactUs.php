@@ -15,11 +15,16 @@
 <div class="wrapper">
 
     <div class="content">
-           <?php 
-                           if(isset($_GET["message"])){
-                                echo "<h2 class='success'>".$_GET["message"]."</h2>";
-                           }
-                            ?>
+		<?php
+			if(isset($_SESSION["message"])){
+				
+				echo '
+				<div class="alert alert-success" role="alert" style="margin-top:20px;">
+				  '. $_SESSION["message"] .'
+				</div>';
+				unset($_SESSION["message"]);
+			}
+		?>
         <!--<hr class="divider">-->
         <form method="POST" action="/saveContactUs.php" name="contactForm">
             <div class="form-group">

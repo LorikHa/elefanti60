@@ -9,5 +9,11 @@ class ContactController{
 	  $ContactDS=new ContactDS();
 	  return $ContactDS->getAll();
 	}
+	
+	public function insertComment($name, $last_name, $email, $birthDate, $rateUs, $phones, $monitors, $laptops, $comment)
+	{
+	  $ContactDS=new ContactDS();
+	  return $ContactDS->insertComment($name, $last_name, $email, $birthDate, $rateUs, $phones, $monitors, $laptops, $comment);
+	}
 }
 ?>
