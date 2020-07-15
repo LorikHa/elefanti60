@@ -22,7 +22,7 @@ function showDivs(n) {
         x[i].style.display = "none";
     }
 
-    if (x.length>0) {
+    if (x.length > 0) {
         x[slideIndex - 1].style.display = "block";
     }
 
@@ -39,12 +39,4 @@ function showNavBar() {
     }
     console.log(x.className);
 }
-
-
-
-
-
-
-
-
 
