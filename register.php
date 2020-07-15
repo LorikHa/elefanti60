@@ -1,48 +1,28 @@
 <?php
 // Include config file
-require_once "config.php";
-include"includes/header.php";
+include "includes/header.php";
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+include $root."/Controller/UserController.php";
+require $root."/Model/UserModel.php";
+$userController=new UserController();
  
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+$username = $password = $confirm_password = $role ="";
+$username_err = $password_err = $confirm_password_err = $role = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-
 
  
     // Validate username
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
     } else{
-        // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE username = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
-            // Set parameters
-            $param_username = trim($_POST["username"]);
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                /* store result */
-                mysqli_stmt_store_result($stmt);
-                
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    $username_err = "This username is already taken.";
-                } else{
-                    $username = trim($_POST["username"]);
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+        $username = trim($_POST["username"]);
+        $userExists=$userController->userExists($username);
+        if($userExists){
+            $username_err = "This username is already taken.";
         }
-         
-        // Close statement
-        mysqli_stmt_close($stmt);
     }
     
     // Validate password
@@ -63,38 +43,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $confirm_password_err = "Password did not match.";
         }
     }
-    
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
-        
+        $response=$userController->registerUser($username, password_hash($password, PASSWORD_DEFAULT));
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
-         
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password,$param_role);
-            
-            // Set parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            $param_role=2;
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                $_SESSION['register_response']='Added successfully';
-                // Redirect to login page
-                header("location: login.php");
-            } else{
-                echo "Something went wrong. Please try again later.";
-            }
+        if($response == 'success'){
+            // Redirect to login page
+            header("location: login.php");
+        } else{
+            echo "Something went wrong. Please try again later.";
         }
-         
-        // Close statement
-        mysqli_stmt_close($stmt);
     }
-    
-    // Close connection
-    mysqli_close($link);
 }
 ?>
  
@@ -139,6 +98,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
     </div>    
+<?PHP
+include "includes/footer.php";
+?>
 </body>
 
 </html>

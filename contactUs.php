@@ -15,16 +15,29 @@
 <div class="wrapper">
 
     <div class="content">
-
+		<?php
+			if(isset($_SESSION["message"])){
+				
+				echo '
+				<div class="alert alert-success" role="alert" style="margin-top:20px;">
+				  '. $_SESSION["message"] .'
+				</div>';
+				unset($_SESSION["message"]);
+			}
+		?>
         <!--<hr class="divider">-->
-        <form method="POST" action="#" name="contactForm">
+        <form method="POST" action="/saveContactUs.php" name="contactForm">
             <div class="form-group">
                 <div class="form-label">
                     <label>Name:</label>
                 </div>
                 <div class="form-element">
                     <input name="name" id="name" type="text" placeholder="Filan">
-
+                            <?php 
+                           if(isset($_GET["nameError"])){
+                                echo "<p class='error'>".$_GET["nameError"]."</p>";
+                           }
+                            ?>
                 </div>
             </div>
 
@@ -35,7 +48,11 @@
                 <div class="form-element">
                     <input name="lastName" id="lastName" type="text" placeholder="Fisteku"
                            >
-
+                           <?php 
+                           if(isset($_GET["lastNameError"])){
+                                echo "<p class='error'>".$_GET["lastNameError"]."</p>";
+                           }
+                            ?>
                 </div>
             </div>
 
@@ -45,7 +62,11 @@
                 </div>
                 <div class="form-element">
                     <input name="email" id="email" type="text" placeholder="example@example.com">
-
+                      <?php 
+                           if(isset($_GET["emailError"])){
+                                echo "<p class='error'>".$_GET["emailError"]."</p>";
+                           }
+                            ?>
                 </div>
                 </div>
 
@@ -56,8 +77,12 @@
                 <div class="form-element">
                     <input type="date" id="birthDate" name="birthDate"
                            value="2001-01-01"
-                           min="1910-01-01" max="2020-12-31">
-
+                           min="1910-01-01" max="2019-12-31">
+                           <?php 
+                           if(isset($_GET["birthDateError"])){
+                                echo "<p class='error'>".$_GET["birthDateError"]."</p>";
+                           }
+                            ?>
                 </div>
             </div>
 
@@ -88,7 +113,11 @@
                         <label for="excellent">5</label>
                     </div>
                 </div>
-
+                 <?php 
+                           if(isset($_GET["rateUsError"])){
+                                echo "<p class='error'>".$_GET["rateUsError"]."</p>";
+                           }
+                            ?>
             </div>
 
             <div class="form-group">
@@ -126,9 +155,9 @@
     </div>
 
 </div>
-<footer>
-    <p>All rights reserved "Elefanti60" &#169; 2020.</p>
-</footer>
+<?PHP
+include "includes/footer.php";
+?>
 <script type="text/javascript" src="./js/jQuery.min.js"></script>
 <script type="text/javascript" src="./js/validator.min.js"></script>
 <script src="js/form-validation.js"></script>

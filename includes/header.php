@@ -21,6 +21,15 @@
                         <ul>
                             <li><a href="./index.php"> Home</a></li>
                             <li><a href="./products.php"> Products</a></li>
+
+                            <?php
+                            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true &&  $_SESSION["role"]==1)
+                            {
+                            echo '<li><a href="./productOptions.php">Product Options</a></li>';
+                            echo '<li><a href="./comments.php">Comments</a></li>';
+                            echo '<li><a href="./users.php">Users</a></li>';
+                            }
+                            ?>
                             <li><a href="./aboutUs.php"> About us</a></li>
                             <li><a href="./contactUs.php"> Contact us</a></li>
                         </ul>
@@ -32,9 +41,7 @@
                             // session_start();
                             // Check if the user is already logged in, if yes then redirect him to welcome page
                             if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ){
-                            echo "Logged in as: ",$_SESSION["username"]," ";
-                            // echo $_SESSION["role"];
-                            echo '<li><a href="logout.php">Logout</a></li>';
+                            echo '<li><a style = "background-color: unset !important; color: unset !important;">Logged in as: '.$_SESSION["username"] . '</a></li><li><a href="logout.php">Logout</a></li>';
                             }else{
                                 echo '<li><a href="./login.php">Login</a></li>';
                             }
@@ -49,13 +56,28 @@
                         <ul>
                             <li><a href="./index.php"> Home</a></li>
                             <li><a href="./products.php"> Products</a></li>
+                            <?php
+                            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true &&  $_SESSION["role"]==1)
+                            {
+                            echo '<li><a href="./productOptions.php">Product Options</a></li>';
+                            echo '<li><a href="./comments.php">Comments</a></li>';
+                            echo '<li><a href="./users.php">Users</a></li>';
+                            }
+                            ?>
                             <li><a href="./aboutUs.php"> About us</a></li>
                             <li><a href="./contactUs.php"> Contact us</a></li>
                         </ul>
                     </div>
                     <div class="action-menu">
                         <ul>
-                            <li><a href="./login.php">Login</a></li>
+                            <?php
+                            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ){
+                            echo '<li><a style = "background-color: unset !important; color: unset !important;">Logged in as: '.$_SESSION["username"].'</a></li><li><a href="logout.php">Logout</a></li>';
+                            }else{
+                                echo '<li><a href="./login.php">Login</a></li>';
+                            }
+                            ?>
+                            
                         </ul>
                     </div>
                 </div>
