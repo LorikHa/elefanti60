@@ -1,4 +1,11 @@
-<?php include ('config.php'); ?>
+<?php 
+
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+include $root."/Controller/ProductController.php";
+require $root."/Model/ProductModel.php";
+$ProductController=new ProductController();
+$userData=$ProductController->getIndexProducts();
+?>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +18,7 @@
 </head>
 <body>
     <?PHP
-    include"includes/header.php";
+    include "includes/header.php";
     ?>
 <div class="slider">
     <div class="mySlides">
@@ -35,118 +42,134 @@
                 <h3>Laptops </h3>
 
 
-                <div class="product in-stock">
-                    <div class="product-image">
-                        <img src="./images/laptops.png" alt="">
-                    </div>
-                    <hr class="product_divider">
-                    <div class="product-details">
-                        <div class="title">
-                            <h4>Laptops</h4>
-                        </div>
-                        <div class="price">
-                            <p>Starting from: 499.99&#8364;</p>
-                        </div>
-                    </div>
+                <?php
+                $count=0;
+foreach($userData as $item){
+    if($item->get_category()==1){
+        $count++;
+        if($item->get_nostock()==0){
+            $class = "out-of-stock";
+        }else
+        {
+            $class = "in-stock";
 
-                </div>
-
-
-
-                <div class="product in-stock">
-                    <div class="product-image">
-                        <img src="./images/phones.png" alt="">
-                    </div>
-                    <hr class="product_divider">
-                    <div class="product-details">
-                        <div class="title">
-                            <h4>Phones</h4>
-                        </div>
-                        <div class="price">
-                            <p>Starting from: 179.99&#8364;</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="product in-stock">
-                    <div class="product-image">
-                        <img src="./images/laptops.png" alt="">
-                    </div>
-                    <hr class="product_divider">
-                    <div class="product-details">
-                        <div class="title">
-                            <h4>Laptops</h4>
-                        </div>
-                        <div class="price">
-                            <p>Starting from: 499.99&#8364;</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="product in-stock">
-                    <div class="product-image">
-                        <img src="./images/monitors.png" alt="">
-                    </div>
-                    <hr class="product_divider">
-                    <div class="product-details">
-                        <div class="title">
-                            <h4>Monitors</h4>
-                        </div>
-                        <div class="price">
-                            <p>Starting from: 159.99&#8364;</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="product in-stock">
-                    <div class="product-image">
-                        <img src="./images/laptops.png" alt="">
-                    </div>
-                    <hr class="product_divider">
-                    <div class="product-details">
-                        <div class="title">
-                            <h4>Laptops</h4>
-                        </div>
-                        <div class="price">
-                            <p>Starting from: 499.99&#8364;</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="product in-stock">
-                    <div class="product-image">
-                        <img src="./images/phones.png" alt="">
-                    </div>
-                    <hr class="product_divider">
-                    <div class="product-details">
-                        <div class="title">
-                            <h4>Phones</h4>
-                        </div>
-                        <div class="price">
-                            <p>Starting from: 179.99&#8364;</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="product out-of-stock">
-                    <div class="product-image">
-                        <img src="./images/phones.png" alt="">
-                    </div>
-                    <hr class="product_divider">
-                    <div class="product-details">
-                        <div class="title">
-                            <h4>Phones</h4>
-                        </div>
-                        <div class="price">
-                            <p>Starting from: 179.99&#8364;</p>
-                        </div>
-                    </div>
-
-                </div>
+        }
+        
+        echo '<div class="product '.$class.'"><a href="product.php?id='.$item->get_id().'" style = "background-color: unset !important; color: unset !important; text-decoration:none !important; ">
+        <div class="product-image">
+            <img class = "image100" src="'. $item->get_image().'" alt="">
+        </div>
+        <hr class="product_divider">
+        <div class="product-details">
+            <div class="title">
+                <h4>'. $item->get_name().'</h4>
             </div>
+            <div class="price">
+                <p>Price: '. $item->get_price() .'&#8364;</p>
+                <p>'. $item->get_nostock() .' left in stock.</p>
+            </div>
+        </div>
+        <div class="product_clone">
+        </div></a>
+    </div>';
+    }
+}
+if($count==0){
+    echo "0 results";
+}
 
-            <!-- <span><a href="#">View more </a></span> -->
+            ?>
+            
+                <!-- <span><a href="#">View more </a></span> -->
+                <button class="back"><</button>
+                <button class="next">></button>
+            </div>
+            <hr class="divider">
+
+            <div class="category">
+                <h3>Monitors</h3>
+                <?php
+
+$count=0;
+foreach($userData as $item){
+    if($item->get_category()==3){
+        $count++;
+        if($item->get_nostock()==0){
+            $class = "out-of-stock";
+        }else
+        {
+            $class = "in-stock";
+
+        }
+        echo '<div class="product '.$class.'"><a href="product.php?id='.$item->get_id().'" style = "background-color: unset !important; color: unset !important; text-decoration:none !important; ">
+                <div class="product-image">
+                    <img class = "image100" src="'. $item->get_image().'" alt="">
+                </div>
+                <hr class="product_divider">
+                <div class="product-details">
+                    <div class="title">
+                        <h4>'. $item->get_name().'</h4>
+                    </div>
+                    <div class="price">
+                        <p>Price: '. $item->get_price() .'&#8364;</p>
+                        <p>'. $item->get_nostock() .' left in stock.</p>
+                    </div>
+                </div>
+                <div class="product_clone">
+                </div></a>
+            </div>';
+    }
+}
+if($count==0){
+    echo "0 results";
+}
+
+            ?>
+                <!-- <span><a href="#">View more </a></span> -->
+                <button class="back"><</button>
+                <button class="next">></button>
+            </div>
+            <hr class="divider">
+            
+            <div class="category">
+                <h3>Phones</h3>
+                <?php
+
+$count=0;
+foreach($userData as $item){
+    if($item->get_category()==2){
+        $count++;
+        if($item->get_nostock()==0){
+            $class = "out-of-stock";
+        }else
+        {
+            $class = "in-stock";
+
+        }
+        echo '<div class="product '.$class.'"><a href="product.php?id='.$item->get_id().'" style = "background-color: unset !important; color: unset !important; text-decoration:none !important; ">
+                <div class="product-image">
+                    <img class = "image100" src="'. $item->get_image().'" alt="">
+                </div>
+                <hr class="product_divider">
+                <div class="product-details">
+                    <div class="title">
+                        <h4>'. $item->get_name().'</h4>
+                    </div>
+                    <div class="price">
+                        <p>Price: '. $item->get_price() .'&#8364;</p>
+                        <p>'. $item->get_nostock() .' left in stock.</p>
+                    </div>
+                </div>
+                <div class="product_clone">
+                </div></a>
+            </div>';
+    }
+}
+if($count==0){
+    echo "0 results";
+}
+            ?>
+                <!-- <span><a href="#">View more </a></span> -->
                 <button class="back"><</button>
                 <button class="next">></button>
             </div>
@@ -155,9 +178,9 @@
     </div>
 
 </div>
-<footer>
-    <p>All rights reserved "Elefanti60" &#169; 2020.</p>
-</footer>
+<?PHP
+include "includes/footer.php";
+?>
 <script type="text/javascript" src="./js/jQuery.min.js"></script>
 <script type="text/javascript" src="./js/main.js"></script>
 </body>

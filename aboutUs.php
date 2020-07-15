@@ -1,5 +1,11 @@
-<?php include ('config.php'); ?>
+<?php 
 
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+include $root."/Controller/AboutController.php";
+require $root."/Model/AboutModel.php";
+$AboutController=new AboutController();
+$userData=$AboutController->getAboutUs();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,96 +17,39 @@
 
 </head>
 <body>
- <?PHP
-        include"includes/header.php";
-    ?>
+<?PHP
+include "includes/header.php";
+?>
 <div class="wrapper">
     <div class="content">
-        <div class="block">
             <div class="text-aboutUs overall">
+                <div class="block">
+                    <div class="text-aboutUs member f-left">
+                        <?php
+                        $counter=0;
+                        foreach($userData as $item){
+                            echo '<img style = " width:200px; height: 200px; margin-bottom: 10px "src=' . $item->get_image() . '>';
+                            echo '<h3>' . $item->get_title() . '</h3>';
+                            echo '<p>' . $item->get_text() . '</p>';
+                            echo '<hr class="divider">';
+                            $counter++;
+                        }
+                        if($counter==0){
+                            echo '0 Results';
+                        }
 
-            </div>
+                        ?>
+
+                    </div>
+                </div>
         </div>
-        <hr class="divider">
-        <div class="block">
-            <div class="text-aboutUs member f-left">
-                <h3>
-                    Fat Nela
-                </h3>
-                <p>
-                    <img src="https://dummyimage.com/150x150/8a838a/fff.png">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                    est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-        </div>
-        <hr class="divider">
-        <div class="block">
-            <div class="text-aboutUs member f-right">
-                <h3>
-                    Ibrahim Vasija
-                </h3>
-                <p>
-                    <img src="https://dummyimage.com/150x150/8a838a/fff.png">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                    est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-        </div>
-        <hr class="divider">
-        <div class="block">
-            <div class="text-aboutUs member f-left">
-                <h3>
-                    Lorik Haxhidauti
-                </h3>
-                <p>
-                    <img src="https://dummyimage.com/150x150/8a838a/fff.png">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                    est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-        </div>
-    </div>
+
+
+
 </div>
-<footer>
-    <p>All rights reserved "Elefanti60" &#169; 2020.</p>
-</footer>
+<?PHP
+include "includes/footer.php";
+?>
 <script type="text/javascript" src="./js/main.js"></script>
 </body>
 </html>
